@@ -1,5 +1,6 @@
     package com.example.user.sync;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -46,14 +47,16 @@ import android.widget.Toast;
 
                     int id = item.getItemId();
 
-                    if (id == R.id.calendarioId){
-                        Toast.makeText(MainActivity.this, "Calendário", Toast.LENGTH_SHORT).show();
+                    if (id == R.id.homeId){
+                        startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    }else if (id == R.id.calendarioId){
+                        startActivity(new Intent(MainActivity.this, Calendario.class));
                     }else if (id == R.id.diarioId){
-                        Toast.makeText(MainActivity.this, "Diario", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, Diario.class));
                     }else if (id == R.id.areadrId){
-                        Toast.makeText(MainActivity.this, "Area da DR", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, AreaDR.class));
                     }else if (id == R.id.galeriaId){
-                        Toast.makeText(MainActivity.this, "Galeria de Fotos", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, Galeria.class));
                     }
 
                     return true;
