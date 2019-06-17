@@ -50,7 +50,7 @@ import android.widget.Toast;
                     if (id == R.id.homeId){
                         startActivity(new Intent(MainActivity.this, MainActivity.class));
                     }else if (id == R.id.calendarioId){
-                        startActivity(new Intent(MainActivity.this, Calendario.class));
+                        startActivity(new Intent(MainActivity.this, CustomCalendarActivity.class));
                     }else if (id == R.id.diarioId){
                         startActivity(new Intent(MainActivity.this, Diario.class));
                     }else if (id == R.id.areadrId){

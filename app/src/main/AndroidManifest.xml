@@ -18,7 +18,7 @@
         <activity android:name=".Diario" />
         <activity android:name=".AreaDR" />
         <activity android:name=".Galeria" />
-        <activity android:name=".Calendario"></activity>
+        <activity android:name=".CustomCalendarActivity"></activity>
     </application>
 
 </manifest>
