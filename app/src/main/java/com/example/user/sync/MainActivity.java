@@ -1,4 +1,4 @@
-    package com.example.user.sync;
+package com.example.user.sync;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;

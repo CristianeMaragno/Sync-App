@@ -19,13 +19,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import android.app.AlertDialog;
+import android.widget.EditText;
+import android.content.DialogInterface;
 
 public class CalendarCustomView extends LinearLayout{
     private static final String TAG = CalendarCustomView.class.getSimpleName();
     private ImageView previousButton, nextButton;
     private TextView currentDate;
     private GridView calendarGridView;
-    private Button addEventButton;
     private static final int MAX_CALENDAR_COLUMN = 42;
     private int month, year;
     private SimpleDateFormat formatter = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
@@ -36,6 +38,8 @@ public class CalendarCustomView extends LinearLayout{
     public CalendarCustomView(Context context) {
         super(context);
     }
+
+
     public CalendarCustomView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -55,7 +59,6 @@ public class CalendarCustomView extends LinearLayout{
         previousButton = (ImageView)view.findViewById(R.id.previous_month);
         nextButton = (ImageView)view.findViewById(R.id.next_month);
         currentDate = (TextView)view.findViewById(R.id.display_current_date);
-        addEventButton = (Button)view.findViewById(R.id.add_calendar_event);
         calendarGridView = (GridView)view.findViewById(R.id.calendar_grid);
     }
     private void setPreviousButtonClickEvent(){
@@ -77,12 +80,62 @@ public class CalendarCustomView extends LinearLayout{
         });
     }
     private void setGridCellClickEvents(){
+
+        calendarGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                final String selectedItem = parent.getItemAtPosition(position).toString();
+
+                LayoutInflater li = LayoutInflater.from(context);
+                View promptsView = li.inflate(R.layout.prompts, null);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        context);
+
+                // set prompts.xml to alertdialog builder
+                alertDialogBuilder.setView(promptsView);
+
+                final EditText userInput = (EditText) promptsView
+                        .findViewById(R.id.editTextDialogUserInput);
+
+                // set dialog message
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        // get user input
+                                        String evento = userInput.getText().toString();
+                                        armazenar_eventos(evento, selectedItem);
+
+                                    }
+                                })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                // show it
+                alertDialog.show();
+
+                return true;
+            }
+        });
+
         calendarGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(context, "Clicked " + position + " id: " + id, Toast.LENGTH_LONG).show();
             }
         });
+
+
     }
     private void setUpCalendarAdapter(){
         List<Date> dayValueInCells = new ArrayList<Date>();
@@ -101,5 +154,9 @@ public class CalendarCustomView extends LinearLayout{
         currentDate.setText(sDate);
         mAdapter = new GridAdapter(context, dayValueInCells, cal, mEvents);
         calendarGridView.setAdapter(mAdapter);
+    }
+
+    private void armazenar_eventos(String evento, String data){
+        Toast.makeText(context, evento + "\n" + data, Toast.LENGTH_LONG).show();
     }
 }
