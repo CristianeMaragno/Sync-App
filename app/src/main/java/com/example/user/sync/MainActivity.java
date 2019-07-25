@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
     public class MainActivity extends AppCompatActivity {
@@ -18,9 +19,9 @@ import android.widget.Toast;
         private DrawerLayout dl;
         private ActionBarDrawerToggle abdt;
 
-        private Button botaoSaudade;
-        private Button botaoConversar;
-        private Button botaoPreciso;
+        private ImageView botaoSaudade;
+        private ImageView botaoConversar;
+        private ImageView botaoPreciso;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +56,6 @@ import android.widget.Toast;
                         startActivity(new Intent(MainActivity.this, Diario.class));
                     }else if (id == R.id.areadrId){
                         startActivity(new Intent(MainActivity.this, AreaDR.class));
-                    }else if (id == R.id.galeriaId){
-                        startActivity(new Intent(MainActivity.this, Galeria.class));
                     }
 
                     return true;
@@ -66,9 +65,9 @@ import android.widget.Toast;
 
             ///////////////////////Botoes Tela////////////////////////////////////////////
 
-            botaoSaudade = (Button) findViewById(R.id.botaoSaudadeId);
-            botaoConversar = (Button) findViewById(R.id.botaoConversarId);
-            botaoPreciso = (Button) findViewById(R.id.botaoPrecisoId);
+            botaoSaudade = (ImageView) findViewById(R.id.botaoSaudadeId);
+            botaoConversar = (ImageView) findViewById(R.id.botaoConversarId);
+            botaoPreciso = (ImageView) findViewById(R.id.botaoPrecisoId);
 
             botaoSaudade.setOnClickListener(new View.OnClickListener() {
                 @Override

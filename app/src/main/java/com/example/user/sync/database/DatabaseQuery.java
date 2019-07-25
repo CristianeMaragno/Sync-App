@@ -1,7 +1,11 @@
 package com.example.user.sync.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
+
 import com.example.user.sync.EventObjects;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,6 +18,7 @@ import java.util.Locale;
 
 public class DatabaseQuery extends DatabaseObject {
     private static final String TAG = Database.class.getSimpleName();
+
     public DatabaseQuery(Context context) {
         super(context);
     }
@@ -42,9 +47,20 @@ public class DatabaseQuery extends DatabaseObject {
         Date date = null;
         try {
             date = format.parse(dateInString);
+            Toast.makeText(context, date, Toast.LENGTH_LONG).show();
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return date;
     }
+
+    public void insertValues(String message, String date){
+        String query = "select * from events INSERT INTO events(message, start_date) VALUES("+message+","+date+");";
+        try {
+            this.getDbConnection().rawQuery(query, null);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

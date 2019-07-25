@@ -27,11 +27,4 @@
         >
     </item>
 
-    <item
-        android:id="@+id/galeriaId"
-        android:title="Galeria de fotos"
-        android:icon="@drawable/ic_camera_enhance_black_24dp"
-        >
-    </item>
-
 </menu>

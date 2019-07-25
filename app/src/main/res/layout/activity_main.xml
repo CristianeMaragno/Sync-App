@@ -21,33 +21,83 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="com.example.user.sync.MainActivity"
-        tools:showIn="@layout/app_bar_main">
+        tools:showIn="@layout/app_bar_main"
+        android:background="#6f9be5">
 
-        <Button
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estou com saudade!"
-            android:id="@+id/botaoSaudadeId"
-            android:layout_marginTop="107dp"
+            android:id="@+id/imageView"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/logo_sync_branco" />
 
-        <Button
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vamos converçar?"
+            android:id="@+id/botaoSaudadeId"
+            android:background="@drawable/botao1"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/botaoConversarId"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:background="@drawable/botao2"
+            android:layout_below="@+id/botaoSaudadeId"
+            android:layout_alignLeft="@+id/botaoSaudadeId"
+            android:layout_alignStart="@+id/botaoSaudadeId"
+            android:layout_marginTop="32dp" />
 
-        <Button
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Preciso de você"
             android:id="@+id/botaoPrecisoId"
-            android:layout_marginTop="60dp"
+            android:background="@drawable/botao3"
             android:layout_below="@+id/botaoConversarId"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignLeft="@+id/botaoConversarId"
+            android:layout_alignStart="@+id/botaoConversarId"
+            android:layout_marginTop="36dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/fundoconectese" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/fundoconectese" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4"
+            android:background="@drawable/fundoconectese"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignLeft="@+id/botaoPrecisoId"
+            android:layout_alignStart="@+id/botaoPrecisoId" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Conecte-se "
+            android:id="@+id/TextConexão"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@+id/imageView4"
+            android:layout_alignTop="@+id/imageView4"
+            android:paddingTop="15dp"
+            android:textColor="#ffffff" />
+
     </RelativeLayout>
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"

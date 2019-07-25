@@ -5,13 +5,23 @@
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".Diario"
-    >
-    <TextView
+    android:background="@color/blueBackgroud">
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Adicione um registro ao diário!"
-        android:id="@+id/diarioTextView"/>
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logo_sync_branco"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Adicione um registro ao diário!"
+            android:id="@+id/diarioTextView"
+            android:textColor="#ffffff" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,10 +29,11 @@
 
         <EditText
             android:id="@+id/diarioTextInput"
-            android:layout_width="200dp"
+            android:layout_width="275dp"
             android:layout_height="wrap_content"
             android:hint="Novo registro"
-            />
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:backgroundTint="@color/colorPrimary"/>
         <Button
             android:id="@+id/diariobtAdd"
             android:layout_width="wrap_content"
@@ -34,6 +45,8 @@
     <ListView
         android:id="@+id/diariolist"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_margin="5dp">
     </ListView>
 </LinearLayout>

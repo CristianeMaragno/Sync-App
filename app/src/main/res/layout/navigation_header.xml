@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/blueBackgroud">
 
 
     <ImageView
@@ -14,6 +14,6 @@
         android:layout_height="130dp"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/ic_android_black_24dp"/>
+        android:background="@drawable/logo_sync_branco"/>
 
 </LinearLayout>

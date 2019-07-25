@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.user.sync.database.DatabaseQuery;
@@ -85,7 +86,54 @@ public class CalendarCustomView extends LinearLayout{
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                final String selectedItem = parent.getItemAtPosition(position).toString();
+                String selectedItemInitial = parent.getItemAtPosition(position).toString();
+
+                String month = "0";
+
+                switch( selectedItemInitial.substring(4,7) ) {
+
+                    case "Jan":
+                        month= "01";
+                        break;
+
+                    case "Feb":
+                        month= "02";
+                        break;
+
+                    case "Mar":
+                        month= "03";
+                        break;
+
+                    case "Apr":
+                        month= "04";
+                        break;
+                    case "May":
+                        month= "05";
+                        break;
+                    case "Jun":
+                        month= "06";
+                        break;
+                    case "Jul":
+                        month= "07";
+                        break;
+                    case "Aug":
+                        month= "08";
+                        break;
+                    case "Sep":
+                        month= "09";
+                        break;
+                    case "Oct":
+                        month= "10";
+                        break;
+                    case "Nov":
+                        month= "11";
+                        break;
+                    case "Dec":
+                        month= "12";
+                        break;
+                }
+
+                final String selectedItem = selectedItemInitial.substring(8,10) +"-"+ month +"-"+ selectedItemInitial.substring(24,28);
 
                 LayoutInflater li = LayoutInflater.from(context);
                 View promptsView = li.inflate(R.layout.prompts, null);
@@ -108,6 +156,9 @@ public class CalendarCustomView extends LinearLayout{
                                         // get user input
                                         String evento = userInput.getText().toString();
                                         armazenar_eventos(evento, selectedItem);
+
+                                        DatabaseQuery insertQuery = new DatabaseQuery(context);
+                                        insertQuery.insertValues(evento, selectedItem);
 
                                     }
                                 })
